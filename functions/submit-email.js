@@ -21,8 +21,7 @@ export const onRequestPost = async (context) => {
     await env.DB.exec(` 
       CREATE TABLE IF NOT EXISTS invites (
         id INTEGER PRIMARY KEY,
-        email TEXT NOT NULL,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        email TEXT
       );
     `);
 
