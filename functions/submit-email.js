@@ -18,12 +18,12 @@ export const onRequestPost = async (context) => {
 
     // 3. Create or reference the "invites" table
     //    (Optional: only run this CREATE TABLE IF NOT EXISTS once, or in a migration step)
-    await env.DB.exec(` 
-      CREATE TABLE IF NOT EXISTS invites (
-        id INTEGER PRIMARY KEY,
-        email TEXT
-      );
-    `);
+    //await env.DB.exec(` 
+      //CREATE TABLE IF NOT EXISTS invites (
+        //id INTEGER PRIMARY KEY,
+        //email TEXT
+      //);
+    //`);
 
     // 4. Insert the email into the D1 database
     //    Using a parameterized statement to avoid manual string building
