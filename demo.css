@@ -103,7 +103,7 @@ body {
   position: absolute;
   top: 65%; /* adjust so it's below the slogan */
   left: 50%;
-  margin-top: 0.75em;
+  margin-top: 3em;
   transform: translate(-50%, -50%);
   max-width: 400px;
   width: 90%;
