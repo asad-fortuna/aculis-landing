@@ -1,0 +1,148 @@
+/* Basic resets */
+@font-face {
+	font-weight: normal;
+	font-style: normal;
+	font-family: 'codropsicons';
+	src:url('../fonts/codropsicons/codropsicons.eot');
+	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/codropsicons/codropsicons.woff') format('woff'),
+		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
+		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Raleway', Calibri, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+  background: #333; /* fallback background color */
+  color: #fff;
+}
+
+/* Container if needed */
+.container {
+  width: 100%;
+  min-height: 100vh; 
+}
+
+/* Large Header */
+.large-header {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  /* fallback background color if no image */
+  background: #333;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Example usage if you want different demos with different images */
+.demo-1 .large-header {
+  background-image: url('demo-1-bg.jpg');
+  /* Or directly in .large-header if you only have one background:
+     background-image: url('demo-1-bg.jpg'); 
+  */
+}
+
+/* Overlay on top of background image for a darker effect */
+.large-header::before {
+  content: "";
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1; /* so it's on top of the background, behind content */
+}
+
+/* Canvas sits at the very bottom (z-index:0) */
+#demo-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Main Title (Logo + Slogan) */
+.main-title {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2; /* above the overlay */
+}
+
+.main-title img {
+  display: block;
+  width: 700px; /* adjust as needed */
+  height: auto;
+  margin: 0 auto;
+}
+
+.slogan {
+  display: block;
+  margin-top: 0.75em;
+  font-size: 1.1em;
+  font-weight: 300;
+}
+
+/* Invite Section (Form and Text) */
+.invite-section {
+  position: absolute;
+  top: 65%; /* adjust so it's below the slogan */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  z-index: 2; /* above overlay */
+}
+
+.invite-section p {
+  margin-bottom: 1em;
+  line-height: 1.4;
+}
+
+/* Form Layout */
+#invite-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em; 
+}
+
+.invite-input {
+  width: 100%;
+  padding: 0.75em;
+  font-size: 1em;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+.invite-btn {
+  background-color: #555;
+  color: #fff;
+  padding: 0.75em 1.5em;
+  border: none;
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.invite-btn:hover,
+.invite-btn:focus {
+  background-color: #777;
+}

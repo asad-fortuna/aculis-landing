@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <title>Aculis Landing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- CSS Files -->
+  <link rel="stylesheet" type="text/css" href="demo.css" />
+  <!-- If you have any normalize.css or additional CSS, link them as well -->
+</head>
+<body>
+  <!-- Container / Demo class, if needed (like .demo-1), or simply remove -->
+  <div class="container demo-1">
+    <!-- Large Header -->
+    <div id="large-header" class="large-header">
+      <!-- Canvas for the interactive animation -->
+      <canvas id="demo-canvas"></canvas>
+
+      <!-- Logo & Slogan -->
+      <h1 class="main-title">
+        <img src="logo.png" alt="Aculis AI" />
+        <span class="slogan">Powering Tomorrow’s Insights</span>
+      </h1>
+
+      <!-- Invite Section -->
+      <section class="invite-section">
+        <p>Aculis is open by invite only.</p>
+        <p>If you'd like to get an invite, please submit your work email address 
+           below and our team will vet and reach out if your company is a good fit.</p>
+
+        <form id="invite-form" action="#" method="POST">
+          <input 
+            type="email"
+            name="email"
+            class="invite-input"
+            placeholder="Enter your work email"
+            required
+          />
+          <button type="submit" class="invite-btn">Request Invite</button>
+        </form>
+      </section>
+    </div>
+  </div><!-- /container -->
+
+  <!-- Optionally, any additional content below if needed -->
+  
+  <!-- JS Scripts for the canvas animation (from your original code) -->
+  <script src="TweenLite.min.js"></script>
+  <script src="EasePack.min.js"></script>
+  <script src="rAF.js"></script>
+  <script src="demo-1.js"></script>
+
+  <!-- AJAX handling for the invite form (if using Option 2 - serverless approach) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('invite-form');
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault(); // Stop normal form submission
+
+        const email = form.email.value;
+        if (!email.includes('@')) {
+          alert('Please enter a valid email address.');
+          return;
+        }
+
+        try {
+          const formData = new FormData(form);
+          const response = await fetch('/submit-email', {
+            method: 'POST',
+            body: formData,
+          });
+
+          if (response.ok) {
+            alert('Thanks! We received your request.');
+            form.reset(); 
+          } else {
+            const errorData = await response.json();
+            alert('Error: ' + (errorData.error || 'Unable to submit.'));
+          }
+        } catch (err) {
+          alert('Network error or server unavailable.');
+          console.error(err);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
